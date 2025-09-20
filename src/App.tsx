@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './hooks/useAuth';
@@ -27,8 +26,8 @@ function App() {
               <Route path="upload" element={<Upload />} />
               <Route path="files" element={<Files />} />
               <Route path="storage" element={<Storage />} />
-              <Route path="admin" element={<Admin />} />
             </Route>
+            <Route path="admin" element={<Admin />} />
           </Routes>
           <Toaster
             position="top-right"

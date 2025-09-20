@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Shield, Upload, Users, BarChart3, Zap, Lock, Globe } from 'lucide-react';
 import { Button } from '../components/ui/Button';
