@@ -8,66 +8,57 @@ export interface User {
 export interface Blob {
   id: string;
   sha256: string;
-  sizeBytes: number;
+  size: number;
   mimeType: string;
   refCount: number;
-  createdAt: string;
 }
 
-export interface FileItem {
+export interface File {
   id: string;
-  userId: string;
-  blobId: string;
   filename: string;
-  declaredMime: string;
+  size: number;
   uploadedAt: string;
   isPublic: boolean;
   downloadCount: number;
-  folderId?: string;
-  tags: string[];
   blob: Blob;
+  tags?: string[];
+  uploader?: User;
 }
 
-export interface Folder {
-  id: string;
-  userId: string;
-  name: string;
-  parentId?: string;
+export interface FileMetaInput {
+  filename: string;
+  declaredMime: string;
+  isPublic: boolean;
+}
+
+export interface UpdateFileInput {
+  filename?: string;
+  isPublic?: boolean;
+  tags?: string[];
 }
 
 export interface StorageStats {
-  totalFiles: number;
-  originalSize: number;
-  deduplicatedSize: number;
-  savings: number;
-  savingsPercentage: number;
-  quotaUsed: number;
-  quotaTotal: number;
+  totalStorageUsed: number;
+  originalStorageUsed: number;
+  storageSavings: number;
+  storageSavingsPercentage: number;
+  fileCount: number;
+  deduplicatedFileCount: number;
 }
 
-export interface UploadProgress {
-  file: File;
-  progress: number;
-  status: 'pending' | 'uploading' | 'completed' | 'error';
-  error?: string;
-  fileId?: string;
+export interface AuthContextType {
+  user: User | null;
+  token: string | null;
+  login: (email: string, password: string) => Promise<void>;
+  signup: (email: string, password: string) => Promise<void>;
+  logout: () => void;
+  isLoading: boolean;
 }
 
-export interface FileFilter {
-  search?: string;
-  mimeType?: string;
-  minSize?: number;
-  maxSize?: number;
-  dateFrom?: Date;
-  dateTo?: Date;
-  tags?: string[];
-  isPublic?: boolean;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  total: number;
-  page: number;
-  limit: number;
-  hasMore: boolean;
+export interface GraphQLResponse<T> {
+  data: T;
+  errors?: Array<{
+    message: string;
+    path?: string[];
+  }>;
 }

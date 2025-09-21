@@ -1,50 +1,59 @@
 import React from 'react';
-import { cn } from '../../lib/utils';
+import { clsx } from 'clsx';
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export function Card({ className, children, ...props }: CardProps) {
+export const Card: React.FC<CardProps> = ({ children, className }) => {
   return (
     <div
-      className={cn(
-        "bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200",
+      className={clsx(
+        'glass-bento rounded-lg',
         className
       )}
-      {...props}
     >
       {children}
     </div>
   );
+};
+
+interface CardHeaderProps {
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function CardHeader({ className, children, ...props }: CardProps) {
+export const CardHeader: React.FC<CardHeaderProps> = ({ children, className }) => {
   return (
-    <div
-      className={cn("px-6 py-4 border-b border-gray-200", className)}
-      {...props}
-    >
+    <div className={clsx('px-6 py-4 border-b border-white/20 text-white', className)}>
       {children}
     </div>
   );
+};
+
+interface CardContentProps {
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function CardContent({ className, children, ...props }: CardProps) {
+export const CardContent: React.FC<CardContentProps> = ({ children, className }) => {
   return (
-    <div className={cn("px-6 py-4", className)} {...props}>
+    <div className={clsx('px-6 py-4 text-white', className)}>
       {children}
     </div>
   );
+};
+
+interface CardFooterProps {
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function CardFooter({ className, children, ...props }: CardProps) {
+export const CardFooter: React.FC<CardFooterProps> = ({ children, className }) => {
   return (
-    <div
-      className={cn("px-6 py-4 border-t border-gray-200 bg-gray-50 rounded-b-lg", className)}
-      {...props}
-    >
+    <div className={clsx('px-6 py-4 border-t border-white/20 text-white', className)}>
       {children}
     </div>
   );
-}
+};

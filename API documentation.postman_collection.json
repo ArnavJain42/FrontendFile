@@ -1,0 +1,1227 @@
+{
+	"info": {
+		"_postman_id": "48656ebc-4143-402d-b20f-2fc6efa0785e",
+		"name": "API documentation",
+		"description": "# 📄 Get started here\n\nThis template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n## 🔖 How to use this template\n\n- Replace the content given brackets (()) with your API's details.\n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40936188"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "SignUp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"mutation { signup(email: \\\"arnavjain.com\\\", password: \\\"hunter2\\\") { id email isAdmin createdAt } }\",\r\n  \"variables\": {},\r\n  \"operationName\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Gets information about the authenticated user."
+					},
+					"response": [
+						{
+							"name": "Get authenticated user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"mutation { signup(email: \\\"arnavjain.com\\\", password: \\\"hunter2\\\") { id email isAdmin createdAt } }\",\r\n  \"variables\": {},\r\n  \"operationName\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Sep 2025 19:28:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"signup\": {\n            \"id\": \"af1ba120-cdec-4b79-91ec-b3dd25c3c684\",\n            \"email\": \"arnavjain.com\",\n            \"isAdmin\": false,\n            \"createdAt\": \"2025-09-18T00:58:36.342358+05:30\"\n        }\n    }\n}"
+						},
+						{
+							"name": "Alice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"mutation { signup(email: \\\"alice@example.com\\\", password: \\\"hunter2\\\") { id email isAdmin createdAt } }\",\r\n  \"variables\": {},\r\n  \"operationName\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Sep 2025 19:26:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"signup\": {\n            \"id\": \"eb5767cd-d41d-4fa8-bdc0-71ec91bebeff\",\n            \"email\": \"alice@example.com\",\n            \"isAdmin\": false,\n            \"createdAt\": \"2025-09-19T00:56:59.131853+05:30\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"mutation { login(email: \\\"alice@example.com\\\", password: \\\"hunter2\\\") }\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"mutation { login(email: \\\"alice@example.com\\\", password: \\\"hunter2\\\") }\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Sep 2025 19:30:44 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"login\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MjIzODQ0LCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.v8IzLTRdO7iYxYqI2KvZ30NJzEKAwhaxaDgFiqETTas\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4Mjg2ODQ1LCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.dUwS5QJaU6Qn4OKPaxfdq6apNnpt0cfo82s7GnFJwpk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"query { me { id email isAdmin createdAt } }\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Me",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4Mjg2ODQ1LCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.dUwS5QJaU6Qn4OKPaxfdq6apNnpt0cfo82s7GnFJwpk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"query { me { id email isAdmin createdAt } }\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Sep 2025 13:34:00 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"me\": {\n            \"id\": \"f9c4c965-fc2a-40ae-9cd2-5882332f726f\",\n            \"email\": \"alice@example.com\",\n            \"isAdmin\": false,\n            \"createdAt\": \"2025-09-18T00:53:24.933651+05:30\"\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "The `/me` endpoints let you manage information about the authenticated user."
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Upload File With Authorization",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MzAwNzgyLCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.R0Tpp3a5xqnqELo8UagIUABlwaoV0wUM6hw4WuiAO9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "operations",
+									"value": "{\n  \"query\": \"mutation Upload($files: [Upload!]!, $meta: [FileMetaInput!]) { uploadFiles(files: $files, metadata: $meta) { id filename size uploadedAt isPublic blob { sha256 size mimeType } } }\",\n  \"variables\": { \"files\": [null], \"meta\":[{\"filename\":\"myfile.png\",\"declaredMime\":\"image/png\",\"isPublic\":true}] }\n}\n",
+									"type": "text"
+								},
+								{
+									"key": "map",
+									"value": "{ \"0\": [\"variables.files.0\"] }\n",
+									"type": "text"
+								},
+								{
+									"key": "0",
+									"type": "file",
+									"src": "/C:/Users/arnav/Downloads/pageDP.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "MIME Mismaych",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MzAwNzgyLCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.R0Tpp3a5xqnqELo8UagIUABlwaoV0wUM6hw4WuiAO9w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "operations",
+											"value": "{\n  \"query\": \"mutation Upload($files: [Upload!]!, $meta: [FileMetaInput!]) { uploadFiles(files: $files, metadata: $meta) { id filename size uploadedAt isPublic blob { sha256 size mimeType } } }\",\n  \"variables\": { \"files\": [null], \"meta\":[{\"filename\":\"myfile.png\",\"declaredMime\":\"image/png\",\"isPublic\":true}] }\n}\n",
+											"type": "text"
+										},
+										{
+											"key": "map",
+											"value": "{ \"0\": [\"variables.files.0\"] }\n",
+											"type": "text"
+										},
+										{
+											"key": "0",
+											"type": "file",
+											"src": "/C:/Users/arnav/Downloads/pageDP.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Sep 2025 16:55:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "129"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"message\": \"declared mime 'image/png' does not match detected mime 'image/jpeg'\",\n            \"path\": [\n                \"uploadFiles\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Single Jpeg Upload",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MzAwNzgyLCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.R0Tpp3a5xqnqELo8UagIUABlwaoV0wUM6hw4WuiAO9w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "operations",
+											"value": "{\n  \"query\": \"mutation Upload($files: [Upload!]!, $meta: [FileMetaInput!]) { uploadFiles(files: $files, metadata: $meta) { id filename size uploadedAt isPublic blob { sha256 size mimeType } } }\",\n  \"variables\": { \"files\": [null], \"meta\":[{\"filename\":\"myfile.jpg\",\"declaredMime\":\"image/jpeg\",\"isPublic\":true}] }\n}\n",
+											"type": "text"
+										},
+										{
+											"key": "map",
+											"value": "{ \"0\": [\"variables.files.0\"] }\n",
+											"type": "text"
+										},
+										{
+											"key": "0",
+											"type": "file",
+											"src": "/C:/Users/arnav/Downloads/pageDP.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Sep 2025 16:56:54 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"uploadFiles\": [\n            {\n                \"id\": \"39aff083-2cfe-4553-b46c-5852eb3c8fc9\",\n                \"filename\": \"pageDP.jpg\",\n                \"size\": 4306,\n                \"uploadedAt\": \"2025-09-18T22:26:54.5250012+05:30\",\n                \"isPublic\": true,\n                \"blob\": {\n                    \"sha256\": \"0c40dfa7e071a4b9c72cdae6b96de811427d401ababc5be43193f6e99e5f7b7e\",\n                    \"size\": 4306,\n                    \"mimeType\": \"image/jpeg\"\n                }\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Single File ReUpload reference ++",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MzAwNzgyLCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.R0Tpp3a5xqnqELo8UagIUABlwaoV0wUM6hw4WuiAO9w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "operations",
+											"value": "{\n  \"query\": \"mutation Upload($files: [Upload!]!, $meta: [FileMetaInput!]) { uploadFiles(files: $files, metadata: $meta) { id filename size uploadedAt isPublic blob { sha256 size mimeType } } }\",\n  \"variables\": { \"files\": [null], \"meta\":[{\"filename\":\"myfile.jpg\",\"declaredMime\":\"image/jpeg\",\"isPublic\":true}] }\n}\n",
+											"type": "text"
+										},
+										{
+											"key": "map",
+											"value": "{ \"0\": [\"variables.files.0\"] }",
+											"type": "text"
+										},
+										{
+											"key": "0",
+											"type": "file",
+											"src": "/C:/Users/arnav/Downloads/pageDP.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Sep 2025 17:08:32 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"uploadFiles\": [\n            {\n                \"id\": \"b178eb48-4cb2-4348-b01f-d1d27c17471c\",\n                \"filename\": \"pageDP.jpg\",\n                \"size\": 4306,\n                \"uploadedAt\": \"2025-09-18T22:38:32.856329+05:30\",\n                \"isPublic\": true,\n                \"blob\": {\n                    \"sha256\": \"0c40dfa7e071a4b9c72cdae6b96de811427d401ababc5be43193f6e99e5f7b7e\",\n                    \"size\": 4306,\n                    \"mimeType\": \"image/jpeg\"\n                }\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "MultiFile Upload",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MzAwNzgyLCJzdWIiOiJmOWM0Yzk2NS1mYzJhLTQwYWUtOWNkMi01ODgyMzMyZjcyNmYifQ.R0Tpp3a5xqnqELo8UagIUABlwaoV0wUM6hw4WuiAO9w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "operations",
+											"value": "{\n  \"query\": \"mutation Upload($files: [Upload!]!, $meta: [FileMetaInput!]) { uploadFiles(files: $files, metadata: $meta) { id filename size uploadedAt isPublic blob { sha256 size mimeType } } }\",\n  \"variables\": {\n    \"files\": [null, null],\n    \"meta\": [\n      {\"filename\": \"photo1.png\", \"declaredMime\": \"image/png\", \"isPublic\": true},\n      {\"filename\": \"doc1.pdf\", \"declaredMime\": \"application/pdf\", \"isPublic\": false}\n    ]\n  },\n  \"operationName\": \"Upload\"\n}\n",
+											"type": "text"
+										},
+										{
+											"key": "map",
+											"value": "{ \"0\": [\"variables.files.0\"] , \"1\":[\"variables.files.1\"]}",
+											"type": "text"
+										},
+										{
+											"key": "0",
+											"type": "file",
+											"src": "/C:/Users/arnav/OneDrive/Pictures/photo1.png"
+										},
+										{
+											"key": "1",
+											"type": "file",
+											"src": "/C:/Users/arnav/Downloads/doc1.pdf"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Sep 2025 17:16:29 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "573"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"uploadFiles\": [\n            {\n                \"id\": \"2650f90e-63a5-484b-bff4-697acef6edc2\",\n                \"filename\": \"photo1.png\",\n                \"size\": 60921,\n                \"uploadedAt\": \"2025-09-18T22:46:29.5612492+05:30\",\n                \"isPublic\": true,\n                \"blob\": {\n                    \"sha256\": \"4eacb5c0c591e87f95f2a2aa621ae2ee267402d6a0ca2ea2e5582b3ce217106f\",\n                    \"size\": 60921,\n                    \"mimeType\": \"image/png\"\n                }\n            },\n            {\n                \"id\": \"8ae1d175-f35a-42d1-be02-c6934af5c77d\",\n                \"filename\": \"doc1.pdf\",\n                \"size\": 1586316,\n                \"uploadedAt\": \"2025-09-18T22:46:29.6147202+05:30\",\n                \"isPublic\": false,\n                \"blob\": {\n                    \"sha256\": \"5780ab997f2c46f3853c8cfa607c1f8c5f43f60d261e238d9ff6dc3f7fbbe1ce\",\n                    \"size\": 1586316,\n                    \"mimeType\": \"application/pdf\"\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete File with Authorization",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4Mzc3NDQ5LCJzdWIiOiJlYjU3NjdjZC1kNDFkLTRmYTgtYmRjMC03MWVjOTFiZWJlZmYifQ.E7r4Te_yQxN3vqRcN28mrZ4jSP93h0sRwHw0LOzZY-M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"mutation DeleteFile($id: ID!){ deleteFile(fileID: $id) }\",\r\n  \"variables\": {\r\n    \"id\": \"704b9dca-619c-42af-8f4b-6d387aa19736\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4Mzc3NDQ5LCJzdWIiOiJlYjU3NjdjZC1kNDFkLTRmYTgtYmRjMC03MWVjOTFiZWJlZmYifQ.E7r4Te_yQxN3vqRcN28mrZ4jSP93h0sRwHw0LOzZY-M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"mutation DeleteFile($id: ID!){ deleteFile(fileID: $id) }\",\r\n  \"variables\": {\r\n    \"id\": \"98ab33bb-1328-4037-8ce2-ea5fd959b985\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Sep 2025 14:20:42 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"deleteFile\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "LIST User Files",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\":\"query Files($limit:Int,$offset:Int){ files(limit:$limit, offset:$offset) { id filename size uploadedAt isPublic downloadCount blob { id sha256 size mimeType refCount } } }\",\r\n  \"variables\": { \"limit\": 20, \"offset\": 0 }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":\"query Files($limit:Int,$offset:Int){ files(limit:$limit, offset:$offset) { id filename size uploadedAt isPublic downloadCount blob { id sha256 size mimeType refCount } } }\",\r\n  \"variables\": { \"limit\": 20, \"offset\": 0 }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Sep 2025 18:33:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1134"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"files\": [\n            {\n                \"id\": \"12eeb351-74a4-474a-8046-8dd2dc0891c0\",\n                \"filename\": \"doc1.pdf\",\n                \"size\": 1586316,\n                \"uploadedAt\": \"2025-09-19T00:58:10.941571+05:30\",\n                \"isPublic\": false,\n                \"downloadCount\": 0,\n                \"blob\": {\n                    \"id\": \"a668f6c2-d7c0-41a3-bb44-29346bca033d\",\n                    \"sha256\": \"\",\n                    \"size\": 0,\n                    \"mimeType\": \"application/pdf\",\n                    \"refCount\": 0\n                }\n            },\n            {\n                \"id\": \"7b3cdbf0-d7d2-45b5-b2a2-56c768e65f46\",\n                \"filename\": \"photo1.png\",\n                \"size\": 60921,\n                \"uploadedAt\": \"2025-09-19T00:58:10.871364+05:30\",\n                \"isPublic\": true,\n                \"downloadCount\": 0,\n                \"blob\": {\n                    \"id\": \"0e065ca5-7181-4a13-9272-a5c103362563\",\n                    \"sha256\": \"\",\n                    \"size\": 0,\n                    \"mimeType\": \"image/png\",\n                    \"refCount\": 0\n                }\n            },\n            {\n                \"id\": \"d51a29df-e618-4aa4-baec-6730c3781818\",\n                \"filename\": \"doc1.pdf\",\n                \"size\": 1586316,\n                \"uploadedAt\": \"2025-09-19T00:58:07.143669+05:30\",\n                \"isPublic\": false,\n                \"downloadCount\": 0,\n                \"blob\": {\n                    \"id\": \"a668f6c2-d7c0-41a3-bb44-29346bca033d\",\n                    \"sha256\": \"\",\n                    \"size\": 0,\n                    \"mimeType\": \"application/pdf\",\n                    \"refCount\": 0\n                }\n            },\n            {\n                \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\",\n                \"filename\": \"photo1.png\",\n                \"size\": 60921,\n                \"uploadedAt\": \"2025-09-19T00:58:07.067469+05:30\",\n                \"isPublic\": true,\n                \"downloadCount\": 0,\n                \"blob\": {\n                    \"id\": \"0e065ca5-7181-4a13-9272-a5c103362563\",\n                    \"sha256\": \"\",\n                    \"size\": 0,\n                    \"mimeType\": \"image/png\",\n                    \"refCount\": 0\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "LIST Public Files No Auth",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\":\"query PublicFiles($limit:Int,$offset:Int){ files(limit:$limit, offset:$offset, onlyPublic:true) { id filename size uploadedAt isPublic downloadCount blob { sha256 size mimeType } } }\",\r\n  \"variables\": { \"limit\": 20, \"offset\": 0 }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":\"query PublicFiles($limit:Int,$offset:Int){ files(limit:$limit, offset:$offset, onlyPublic:true) { id filename size uploadedAt isPublic downloadCount blob { sha256 size mimeType } } }\",\r\n  \"variables\": { \"limit\": 20, \"offset\": 0 }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Sep 2025 18:34:55 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "442"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"files\": [\n            {\n                \"id\": \"7b3cdbf0-d7d2-45b5-b2a2-56c768e65f46\",\n                \"filename\": \"photo1.png\",\n                \"size\": 60921,\n                \"uploadedAt\": \"2025-09-19T00:58:10.871364+05:30\",\n                \"isPublic\": true,\n                \"downloadCount\": 0,\n                \"blob\": {\n                    \"sha256\": \"\",\n                    \"size\": 0,\n                    \"mimeType\": null\n                }\n            },\n            {\n                \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\",\n                \"filename\": \"photo1.png\",\n                \"size\": 60921,\n                \"uploadedAt\": \"2025-09-19T00:58:07.067469+05:30\",\n                \"isPublic\": true,\n                \"downloadCount\": 0,\n                \"blob\": {\n                    \"sha256\": \"\",\n                    \"size\": 0,\n                    \"mimeType\": null\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Single File (Metadata)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\":\"query File($id:ID!){ file(id:$id) { id filename size uploadedAt isPublic downloadCount blob { id sha256 size mimeType refCount } } }\",\r\n  \"variables\": { \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\" }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":\"query File($id:ID!){ file(id:$id) { id filename size uploadedAt isPublic downloadCount blob { id sha256 size mimeType refCount } } }\",\r\n  \"variables\": { \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\" }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Sep 2025 18:42:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "360"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"file\": {\n            \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\",\n            \"filename\": \"photo1.png\",\n            \"size\": 60921,\n            \"uploadedAt\": \"2025-09-19T00:58:07.067469+05:30\",\n            \"isPublic\": true,\n            \"downloadCount\": 0,\n            \"blob\": {\n                \"id\": \"0e065ca5-7181-4a13-9272-a5c103362563\",\n                \"sha256\": \"4eacb5c0c591e87f95f2a2aa621ae2ee267402d6a0ca2ea2e5582b3ce217106f\",\n                \"size\": 60921,\n                \"mimeType\": \"image/png\",\n                \"refCount\": 2\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update File Metadata",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\":\"mutation UpdateFile($id:ID!, $input: UpdateFileInput!){ updateFile(fileID:$id, input:$input){ id filename isPublic tags } }\",\r\n  \"variables\": {\r\n    \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\",\r\n    \"input\": { \"filename\":\"new-name.png\", \"isPublic\": false, \"tags\":[\"project\",\"v1\"] }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":\"mutation UpdateFile($id:ID!, $input: UpdateFileInput!){ updateFile(fileID:$id, input:$input){ id filename isPublic tags } }\",\r\n  \"variables\": {\r\n    \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\",\r\n    \"input\": { \"filename\":\"new-name.png\", \"isPublic\": false, \"tags\":[\"project\",\"v1\"] }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/query",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Sep 2025 19:56:43 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "122"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"updateFile\": {\n            \"id\": \"8d6482d8-bf00-42a8-b78c-a7c3975eb34e\",\n            \"filename\": \"new-name.png\",\n            \"isPublic\": false,\n            \"tags\": []\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Download Public File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/download/8d6482d8-bf00-42a8-b78c-a7c3975eb34e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"download",
+								"8d6482d8-bf00-42a8-b78c-a7c3975eb34e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Download Public File",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/download/d51a29df-e618-4aa4-baec-6730c3781818",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"download",
+										"d51a29df-e618-4aa4-baec-6730c3781818"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Sep 2025 18:57:46 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								}
+							],
+							"cookie": [],
+							"body": "unauthorized\n"
+						}
+					]
+				},
+				{
+					"name": "Download Private File",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZXhwIjoxNzU4MzkzMDU0LCJzdWIiOiJlYjU3NjdjZC1kNDFkLTRmYTgtYmRjMC03MWVjOTFiZWJlZmYifQ.3JwKkM8xjxpObn_MYW_slPI_KO14Lo2xNAM1AbXt-b0",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}

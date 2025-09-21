@@ -1,206 +1,202 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Files, 
-  HardDrive, 
-  TrendingUp, 
-  Users,
-  Upload,
-  BarChart3
-} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { StorageStats } from '../types';
-import { api } from '../lib/api';
-import { Card, CardContent, CardHeader } from '../components/ui/Card';
+import { Layout } from '../components/Layout';
+import { FileUpload } from '../components/FileUpload';
+import { FileList } from '../components/FileList';
+import { StorageStats } from '../components/StorageStats';
+import { File, StorageStats as StorageStatsType } from '../types';
+import { apiClient } from '../lib/api';
 import { Button } from '../components/ui/Button';
-import { formatBytes } from '../lib/utils';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Globe, Upload, BarChart3 } from 'lucide-react';
+import toast from 'react-hot-toast';
 
-export function Dashboard() {
-  const [stats, setStats] = useState<StorageStats | null>(null);
-  const [loading, setLoading] = useState(true);
+export const Dashboard: React.FC = () => {
+  const [files, setFiles] = useState<File[]>([]);
+  const [storageStats, setStorageStats] = useState<StorageStatsType | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'upload' | 'files'>('upload');
+
+  const fetchFiles = async () => {
+    try {
+      const fetchedFiles = await apiClient.getFiles(100, 0);
+      setFiles(fetchedFiles);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to fetch files';
+      toast.error(message);
+    }
+  };
+
+  const fetchStorageStats = async () => {
+    try {
+      const stats = await apiClient.getStorageStats();
+      setStorageStats(stats);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to fetch storage stats';
+      toast.error(message);
+    }
+  };
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const data = await api.getStorageStats();
-        setStats(data);
-      } catch (error) {
-        console.error('Failed to fetch stats:', error);
-      } finally {
-        setLoading(false);
-      }
+    const loadData = async () => {
+      setIsLoading(true);
+      await Promise.all([fetchFiles(), fetchStorageStats()]);
+      setIsLoading(false);
     };
 
-    fetchStats();
+    loadData();
   }, []);
 
-  const chartData = stats ? [
-    {
-      name: 'Original Size',
-      value: stats.originalSize / (1024 * 1024),
-      fill: '#3B82F6'
-    },
-    {
-      name: 'Deduplicated Size',
-      value: stats.deduplicatedSize / (1024 * 1024),
-      fill: '#14B8A6'
-    },
-    {
-      name: 'Savings',
-      value: stats.savings / (1024 * 1024),
-      fill: '#F97316'
-    }
-  ] : [];
+  const handleUploadComplete = () => {
+    // Refresh files and stats after upload
+    fetchFiles();
+    fetchStorageStats();
+  };
 
-  if (loading) {
+  const handleFileUpdate = () => {
+    fetchFiles();
+    fetchStorageStats();
+  };
+
+  const handleFileDelete = () => {
+    fetchFiles();
+    fetchStorageStats();
+  };
+
+  if (isLoading) {
     return (
-      <div className="p-8">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-8" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-32 bg-gray-200 rounded-lg" />
-            ))}
-          </div>
-          <div className="h-80 bg-gray-200 rounded-lg" />
+      <Layout currentPage="dashboard">
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
         </div>
-      </div>
+      </Layout>
     );
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
-      <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-        <p className="text-sm sm:text-base text-gray-600">Welcome back! Here's an overview of your file storage.</p>
-      </div>
+    <Layout currentPage="dashboard">
+      <div className="min-h-screen relative overflow-hidden" style={{
+        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif',
+        background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%)'
+      }}>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
+          .bebas-neue { font-family: 'Bebas Neue', cursive; }
+          .glass-bento {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          }
+          .glass-bento:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(147, 197, 253, 0.1);
+            transform: translateY(-8px);
+          }
+          .apple-gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+        `}</style>
+        
+        {/* Subtle background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
 
-      {/* Quick actions */}
-      <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mb-6 sm:mb-8">
-        <Link to="/app/upload">
-          <Button className="flex items-center justify-center sm:justify-start space-x-2 w-full sm:w-auto">
-            <Upload className="w-4 h-4" />
-            <span>Upload Files</span>
-          </Button>
-        </Link>
-        <Link to="/app/files">
-          <Button variant="outline" className="flex items-center justify-center sm:justify-start space-x-2 w-full sm:w-auto">
-            <Files className="w-4 h-4" />
-            <span>Browse Files</span>
-          </Button>
-        </Link>
-      </div>
+        <div className="relative z-10 space-y-8 p-4 lg:p-8">
+          {/* Header */}
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 flex items-center justify-center">
+              <Upload className="w-8 h-8 text-blue-400 mr-4" style={{ filter: 'drop-shadow(0 0 10px rgba(147, 197, 253, 0.5))' }} />
+              <span className="bebas-neue apple-gradient-text">DASHBOARD</span>
+            </h1>
+            <p className="text-xl text-gray-400 mb-6">
+              Manage your files and view storage analytics
+            </p>
+            <Link to="/public-files">
+              <Button className="bg-white text-black px-6 py-3 text-lg font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 border-0 hover:bg-gray-200 flex items-center space-x-2">
+                <Globe className="w-5 h-5 text-black" />
+                <span className="text-black">Browse Public Files</span>
+              </Button>
+            </Link>
+          </div>
 
-      {/* Stats cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-        <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-blue-100 text-xs sm:text-sm font-medium">Total Files</p>
-                <p className="text-xl sm:text-2xl font-bold">{stats?.totalFiles || 0}</p>
+          {/* Storage Statistics */}
+          {storageStats && (
+            <div className="glass-bento rounded-3xl p-8">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mr-4">
+                  <BarChart3 className="w-6 h-6 text-green-400" />
+                </div>
+                <h2 className="text-2xl bebas-neue apple-gradient-text tracking-wide">STORAGE OVERVIEW</h2>
               </div>
-              <Files className="w-6 h-6 sm:w-8 sm:h-8 text-blue-200" />
+              <StorageStats stats={storageStats} />
             </div>
-          </CardContent>
-        </Card>
+          )}
 
-        <Card className="bg-gradient-to-r from-teal-500 to-teal-600 text-white">
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-teal-100 text-xs sm:text-sm font-medium">Storage Used</p>
-                <p className="text-xl sm:text-2xl font-bold">
-                  {formatBytes(stats?.deduplicatedSize || 0, 1)}
-                </p>
+          {/* Tabs */}
+          <div className="glass-bento rounded-3xl p-8">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mr-4">
+                <Upload className="w-6 h-6 text-purple-400" />
               </div>
-              <HardDrive className="w-6 h-6 sm:w-8 sm:h-8 text-teal-200" />
+              <h2 className="text-2xl bebas-neue apple-gradient-text tracking-wide">FILE MANAGEMENT</h2>
             </div>
-          </CardContent>
-        </Card>
+            
+            <div className="border-b border-gray-700 mb-6">
+              <nav className="-mb-px flex space-x-8">
+                <button
+                  onClick={() => setActiveTab('upload')}
+                  className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
+                    activeTab === 'upload'
+                      ? 'border-blue-400 text-blue-400'
+                      : 'border-transparent text-gray-400 hover:text-white hover:border-gray-500'
+                  }`}
+                >
+                  Upload Files
+                </button>
+                <button
+                  onClick={() => setActiveTab('files')}
+                  className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
+                    activeTab === 'files'
+                      ? 'border-blue-400 text-blue-400'
+                      : 'border-transparent text-gray-400 hover:text-white hover:border-gray-500'
+                  }`}
+                >
+                  Recent Files
+                </button>
+              </nav>
+            </div>
 
-        <Card className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
+            {/* Tab Content */}
+            {activeTab === 'upload' ? (
               <div>
-                <p className="text-orange-100 text-xs sm:text-sm font-medium">Space Saved</p>
-                <p className="text-xl sm:text-2xl font-bold">
-                  {formatBytes(stats?.savings || 0, 1)}
-                </p>
-              </div>
-              <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-orange-200" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-r from-purple-500 to-purple-600 text-white">
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-purple-100 text-xs sm:text-sm font-medium">Savings</p>
-                <p className="text-xl sm:text-2xl font-bold">
-                  {Math.round(stats?.savingsPercentage || 0)}%
-                </p>
-              </div>
-              <BarChart3 className="w-6 h-6 sm:w-8 sm:h-8 text-purple-200" />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Storage breakdown chart */}
-      <Card>
-        <CardHeader>
-          <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Storage Breakdown</h2>
-        </CardHeader>
-        <CardContent>
-          <div className="h-64 sm:h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip 
-                  formatter={(value) => [`${value.toFixed(1)} MB`, 'Size']}
+                <h3 className="text-xl font-semibold text-white mb-6">Upload New Files</h3>
+                <FileUpload
+                  onUploadComplete={handleUploadComplete}
+                  onUploadStart={() => {
+                    // Could show loading state here
+                  }}
                 />
-                <Bar dataKey="value" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+              </div>
+            ) : (
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-6">Recent Files</h3>
+                <FileList
+                  files={files.slice(0, 10)} // Show only recent 10 files
+                  onFileUpdate={handleFileUpdate}
+                  onFileDelete={handleFileDelete}
+                />
+              </div>
+            )}
           </div>
-          <div className="mt-4 text-xs sm:text-sm text-gray-600">
-            <p>
-              <strong>Deduplication Savings:</strong> FileVault automatically detects duplicate files 
-              and stores them only once, saving you {Math.round(stats?.savingsPercentage || 0)}% storage space.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Quota usage */}
-      {stats && (
-        <Card className="mt-4 sm:mt-6">
-          <CardHeader>
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Quota Usage</h2>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs sm:text-sm text-gray-600">Storage Used</span>
-              <span className="text-xs sm:text-sm font-medium">
-                {formatBytes(stats.quotaUsed)} / {formatBytes(stats.quotaTotal)}
-              </span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div 
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                style={{ width: `${Math.min((stats.quotaUsed / stats.quotaTotal) * 100, 100)}%` }}
-              />
-            </div>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">
-              {((stats.quotaUsed / stats.quotaTotal) * 100).toFixed(1)}% of quota used
-            </p>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+        </div>
+      </div>
+    </Layout>
   );
-}
+};
